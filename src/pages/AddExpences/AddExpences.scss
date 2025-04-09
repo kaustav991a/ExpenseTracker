@@ -1,0 +1,170 @@
+.add-expense-container {
+    background: linear-gradient(to bottom, #19766c, #ffffff);
+    min-height: 100vh;
+    padding: 20px 16px;
+    font-family: "Inter", sans-serif;
+
+    .top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fff;
+        margin-bottom: 24px;
+        max-width: 80%;
+        margin: 0 auto 24px;
+
+        button {
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+
+    .form-wrapper {
+        background: #fff;
+        border-radius: 20px;
+        padding: 24px 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .expense-form {
+        .form-group {
+            margin-bottom: 20px;
+
+            label {
+                font-size: 12px;
+                color: #888;
+                margin-bottom: 6px;
+                display: block;
+            }
+
+            input {
+                width: 100%;
+                padding: 12px 14px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 12px;
+                outline: none;
+                color: #222;
+            }
+        }
+
+        .dropdown-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            padding: 12px 14px;
+            cursor: pointer;
+            justify-content: space-between;
+
+            img.dropdown-icon {
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+            span {
+                font-size: 16px;
+                color: #222;
+
+                &.arrow {
+                    margin-left: auto;
+                    font-size: 16px;
+                    color: #aaa;
+                }
+            }
+        }
+
+        .amount {
+            position: relative;
+
+            .amount-input-box {
+                display: flex;
+                align-items: center;
+                border: 1px solid #ccc;
+                border-radius: 12px;
+                padding: 12px 14px;
+
+                .currency {
+                    font-size: 16px;
+                    margin-right: 6px;
+                    color: #19766c;
+                    font-weight: 600;
+                }
+
+                input {
+                    flex: 1;
+                    border: none;
+                    outline: none;
+                    font-size: 16px;
+                    color: #19766c;
+                    font-weight: 600;
+                    background: transparent;
+                }
+
+                .clear-btn {
+                    background: none;
+                    border: none;
+                    color: #19766c;
+                    font-size: 14px;
+                    cursor: pointer;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .date-picker {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            padding: 12px 14px;
+
+            input {
+                flex: 1;
+                border: none;
+                font-size: 16px;
+                color: #222;
+                background: transparent;
+                outline: none;
+            }
+
+            .calendar-icon {
+                font-size: 18px;
+                color: #888;
+            }
+        }
+
+        .invoice-upload {
+            .upload-box {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1.5px dashed #ccc;
+                border-radius: 12px;
+                padding: 16px;
+                cursor: pointer;
+                color: #19766c;
+                font-weight: 500;
+                font-size: 14px;
+                gap: 8px;
+
+                .plus-icon {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,228 @@
+.home-outer {
+    min-height: 100vh;
+    position: relative;
+    .topbluesec {
+        height: 287px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #429690;
+        padding: 15px 30px;
+        .text {
+            h6 {
+                color: #fff;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+            h5 {
+                color: #fff;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+        }
+        .notification {
+            a {
+                border-radius: 6.667px;
+                background: rgba(255, 255, 255, 0.06);
+                display: inline-flex;
+                padding: 8.333px;
+                align-items: center;
+                gap: 8.333px;
+                svg {
+                    fill: white;
+                }
+            }
+        }
+    }
+    .totalbalance {
+        border-radius: 20px;
+        background: #2f7e79;
+        padding: 25px 20px;
+        width: 80%;
+        margin: -50px auto 0;
+        h6 {
+            color: #fff;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            letter-spacing: -0.32px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        h5 {
+            color: #fff;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: -1.5px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .top-sec {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            .more {
+                svg {
+                    fill: white;
+                }
+            }
+        }
+        .income-expence {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            h6 {
+                color: #d0e5e4;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: -0.8px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            h5 {
+                color: #fff;
+                text-align: right;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                letter-spacing: 1px;
+            }
+            span {
+                display: flex;
+                width: 24px;
+                height: 24px;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                flex-shrink: 0;
+                border-radius: 40px;
+                background: rgba(255, 255, 255, 0.15);
+            }
+        }
+    }
+
+    .transactions {
+        background: #fff;
+        border-radius: 12px;
+        padding: 20px 0;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        max-width: 80%;
+        margin: 0 auto;
+
+        .transactions-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+
+            h3 {
+                font-size: 18px;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            .see-all {
+                font-size: 14px;
+                color: var(--Secondary, #666);
+                text-decoration: none;
+            }
+        }
+
+        .transactions-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            .transaction-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 14px;
+
+                .left {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    .icon {
+                        display: flex;
+                        width: 50px;
+                        height: 50px;
+                        padding: 5px;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+
+                        border-radius: 8px;
+                        background: #f0f6f5;
+                    }
+                    img {
+                        width: 39px;
+                        // height: 39px;
+                        // border-radius: 50%;
+                        object-fit: cover;
+                    }
+
+                    h4 {
+                        margin: 0;
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: 13px;
+                        color: #888;
+                    }
+                }
+
+                .amount {
+                    font-size: 15px;
+                    font-weight: 600;
+
+                    &.positive {
+                        color: #2ecc71;
+                    }
+
+                    &.negative {
+                        color: #e74c3c;
+                    }
+                }
+            }
+        }
+    }
+
+    .bottomnav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #429690;
+        padding: 15px 30px;
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            li {
+                button {
+                    border: none;
+                    background-color: transparent;
+                    color: white;
+                    font-size: 30px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
