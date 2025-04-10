@@ -1,0 +1,205 @@
+.home-outer {
+  min-height: 100vh;
+  position: relative;
+}
+.home-outer .topbluesec {
+  height: 287px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #429690;
+  padding: 15px 30px;
+}
+.home-outer .topbluesec .text h6 {
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.home-outer .topbluesec .text h5 {
+  color: #fff;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.home-outer .topbluesec .notification a {
+  border-radius: 6.667px;
+  background: rgba(255, 255, 255, 0.06);
+  display: inline-flex;
+  padding: 8.333px;
+  align-items: center;
+  gap: 8.333px;
+}
+.home-outer .topbluesec .notification a svg {
+  fill: white;
+}
+.home-outer .totalbalance {
+  border-radius: 20px;
+  background: #2f7e79;
+  padding: 25px 20px;
+  width: 80%;
+  margin: -50px auto 0;
+}
+.home-outer .totalbalance h6 {
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.home-outer .totalbalance h5 {
+  color: #fff;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -1.5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.home-outer .totalbalance .top-sec {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.home-outer .totalbalance .top-sec .more svg {
+  fill: white;
+}
+.home-outer .totalbalance .income-expence {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.home-outer .totalbalance .income-expence h6 {
+  color: #d0e5e4;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home-outer .totalbalance .income-expence h5 {
+  color: #fff;
+  text-align: right;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 1px;
+}
+.home-outer .totalbalance .income-expence span {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.15);
+}
+.home-outer .transactions {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 0;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  max-width: 80%;
+  margin: 0 auto;
+}
+.home-outer .transactions .transactions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.home-outer .transactions .transactions-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+.home-outer .transactions .transactions-header .see-all {
+  font-size: 14px;
+  color: var(--Secondary, #666);
+  text-decoration: none;
+}
+.home-outer .transactions .transactions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.home-outer .transactions .transactions-list .transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.home-outer .transactions .transactions-list .transaction-item .left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.home-outer .transactions .transactions-list .transaction-item .left .icon {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: #f0f6f5;
+}
+.home-outer .transactions .transactions-list .transaction-item .left img {
+  width: 39px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.home-outer .transactions .transactions-list .transaction-item .left h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+.home-outer .transactions .transactions-list .transaction-item .left p {
+  margin: 0;
+  font-size: 13px;
+  color: #888;
+}
+.home-outer .transactions .transactions-list .transaction-item .amount {
+  font-size: 15px;
+  font-weight: 600;
+}
+.home-outer .transactions .transactions-list .transaction-item .amount.positive {
+  color: #2ecc71;
+}
+.home-outer .transactions .transactions-list .transaction-item .amount.negative {
+  color: #e74c3c;
+}
+.home-outer .bottomnav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #429690;
+  padding: 15px 30px;
+}
+.home-outer .bottomnav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.home-outer .bottomnav ul li button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}/*# sourceMappingURL=Home.css.map */

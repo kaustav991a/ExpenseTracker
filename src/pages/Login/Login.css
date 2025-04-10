@@ -1,0 +1,41 @@
+.login {
+  background: linear-gradient(167deg, #63b5af -4.48%, #438883 102.95%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100lvh;
+  height: 100dvh;
+  height: 100svh;
+  gap: 20px;
+  text-align: center;
+}
+.login .loginbx {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  max-width: 600px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 30px;
+}
+.login h1 {
+  color: #000;
+  margin-bottom: 20px;
+}
+.login .btn {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+.login input:not([type=submit]) {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #438883;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+}
+.login p a {
+  color: #63b5af;
+}/*# sourceMappingURL=Login.css.map */

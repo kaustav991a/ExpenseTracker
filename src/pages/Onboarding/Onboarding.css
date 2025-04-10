@@ -1,0 +1,49 @@
+.imgbxouter {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  height: 100lvh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eef8f7;
+  text-align: center;
+  flex-direction: column;
+}
+.imgbxouter .imgbg {
+  display: block;
+}
+.imgbxouter .imgbg img {
+  margin-bottom: 30px;
+  max-width: 278px;
+}
+.imgbxouter .imgbg h1 {
+  color: var(--green, #438883);
+  text-align: center;
+  font-size: 36px;
+  line-height: 38px;
+  max-width: 301px;
+  margin: 0 auto;
+}
+.imgbxouter p {
+  margin-top: 20px;
+}
+
+.already-have-account-log-in-span {
+  color: #444444;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+.already-have-account-log-in-span2 {
+  color: var(--green, #438883);
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 15px;
+  display: inline-block;
+}/*# sourceMappingURL=Onboarding.css.map */
