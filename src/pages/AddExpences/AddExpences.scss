@@ -31,11 +31,16 @@
         border-radius: 20px;
         padding: 24px 20px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        max-width: 80%;
+        max-width: 600px;
         margin: 0 auto;
     }
 
     .expense-form {
+        .btn {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+        }
         .form-group {
             margin-bottom: 20px;
 
@@ -54,6 +59,24 @@
                 border-radius: 12px;
                 outline: none;
                 color: #222;
+            }
+            select {
+                -webkit-appearance: none; /* Removes default appearance in Safari */
+                -moz-appearance: none; /* Removes default appearance in Firefox */
+                appearance: none; /* Standard */
+                outline: none; /* Removes the focus outline */
+                box-shadow: none; /* Removes the box shadow */
+                // border: 1px solid #ccc; /* Custom border */
+                padding: 16px 10px; /* Add padding for better UI */
+                background-color: #fff; /* Background color */
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z" fill="%23666"/></svg>');
+                background-repeat: no-repeat;
+                background-position: right 10px center;
+                background-size: 10px;
+                font-size: 16px;
+                color: #222;
+                width: 100%;
+                font-family: "Poppins", sans-serif;
             }
         }
 
@@ -93,7 +116,7 @@
                 align-items: center;
                 border: 1px solid #ccc;
                 border-radius: 12px;
-                padding: 12px 14px;
+                padding: 4px 14px;
 
                 .currency {
                     font-size: 16px;
@@ -124,21 +147,33 @@
         }
 
         .date-picker {
-            position: relative;
-            display: flex;
-            align-items: center;
-            border: 1px solid #ccc;
-            border-radius: 12px;
-            padding: 12px 14px;
+            position: relative !important;
+            display: flex !important;
+            align-items: center !important;
+            border: 1px solid #ccc !important;
+            border-radius: 12px !important;
+            // padding: 12px 14px !important;
+            width: 100% !important;
+            padding: 15px 15px !important;
+            font-size: 16px !important;
+            border: 1px solid #ccc !important;
+            border-radius: 12px !important;
+            outline: none !important;
+            color: #222 !important;
+            display: block !important;
+            font-family: "Poppins", sans-serif !important;
 
-            input {
-                flex: 1;
-                border: none;
-                font-size: 16px;
-                color: #222;
-                background: transparent;
-                outline: none;
+            input[type="date"] {
             }
+
+            // input {
+            //     flex: 1;
+            //     border: none;
+            //     font-size: 16px;
+            //     color: #222;
+            //     background: transparent;
+            //     outline: none;
+            // }
 
             .calendar-icon {
                 font-size: 18px;

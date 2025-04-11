@@ -1,17 +1,9 @@
 import { motion } from "framer-motion";
 import "./Onboarding.scss";
 import heroImg from "../../assets/images/man.png";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Onboarding() {
-  const navigate = useNavigate(); // ✅ correct way to use the hook
-
-  const handleSignup = () => {
-    navigate("/signup"); // ✅ use the navigate function returned by the hook
-  };
-  const handleLogin = () => {
-    navigate("/login"); // ✅ use the navigate function returned by the hook
-  };
   return (
     <motion.div
       className="imgbxouter"
@@ -23,14 +15,11 @@ function Onboarding() {
         <img src={heroImg} alt="hero" />
         <h1>spend smarter save more</h1>
       </div>
-      <a href="" className="btn" onClick={handleSignup}>
+      <Link to="/signup" className="btn">
         Get Started
-      </a>
+      </Link>
       <p>
-        Already have account?{" "}
-        <a href="" onClick={handleLogin}>
-          Log In
-        </a>
+        Already have account? <Link to="/login">Log In</Link>
       </p>
     </motion.div>
   );

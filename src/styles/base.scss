@@ -46,7 +46,13 @@ li,
 ol {
     list-style: none;
 }
-
+button {
+    cursor: pointer;
+}
+a,
+button {
+    transition: all 0.3s ease-in-out;
+}
 .btn {
     background: linear-gradient(180deg, rgba(105, 174, 169, 1) 0%, rgba(63, 135, 130, 1) 100%);
     border-radius: 40px;

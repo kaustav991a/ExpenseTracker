@@ -24,7 +24,7 @@ function ConfirmSignup() {
   return (
     <div className="confirmsignup">
       <div className="confirmsignupbx">
-        <h1>Confirm Signup</h1>
+        <h1>Creating your account ... </h1>
         <p>
           Redirecting to home in <span>{seconds}</span> seconds...
         </p>
