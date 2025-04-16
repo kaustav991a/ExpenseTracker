@@ -9,12 +9,9 @@ import { FaBell } from "react-icons/fa"; // Font Awesome
 import { MdMoreHoriz } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md"; // Material Design
 import { MdKeyboardArrowUp } from "react-icons/md";
-import { MdAddHome } from "react-icons/md";
-import { MdBarChart } from "react-icons/md";
-import { MdWallet } from "react-icons/md";
-import { FaUserCircle } from "react-icons/fa";
-import { FaCirclePlus } from "react-icons/fa6";
+
 import { CiEdit } from "react-icons/ci";
+import BottomNav from "../../components/BottomNav/BottomNav";
 
 function Home() {
   const { transactions } = useContext(TransactionContext);
@@ -122,40 +119,7 @@ function Home() {
             </ul>
           </div>
 
-          <div className="bottomnav">
-            <ul>
-              <li>
-                <button>
-                  {/* onClick={aa} */}
-                  <MdAddHome />
-                </button>
-              </li>
-              <li>
-                <button>
-                  {/* onClick={aa} */}
-                  <MdBarChart />
-                </button>
-              </li>
-              <li>
-                <Link to="/add-expences">
-                  {/* onClick={aa} */}
-                  <FaCirclePlus />
-                </Link>
-              </li>
-              <li>
-                <button>
-                  {/* onClick={aa} */}
-                  <MdWallet />
-                </button>
-              </li>
-              <li>
-                <button>
-                  {/* onClick={aa} */}
-                  <FaUserCircle />
-                </button>
-              </li>
-            </ul>
-          </div>
+          <BottomNav />
         </div>
       </motion.div>
     </>

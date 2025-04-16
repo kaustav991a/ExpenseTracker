@@ -1,0 +1,53 @@
+.chart-container {
+    padding: 16px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .tabs button {
+        background: transparent;
+        border: none;
+        font-weight: 500;
+        margin-right: 12px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #666;
+
+        &.active {
+            background: #3aa389;
+            color: #fff;
+        }
+    }
+
+    select {
+        padding: 6px 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+}
+
+.topbluesec.whitebg {
+    background-color: white;
+    .text {
+        h5 {
+            color: black;
+        }
+    }
+    .whitearrow {
+        color: black;
+    }
+}
+
+.chartOuter {
+    width: 600px;
+    height: 250px;
+    margin: 0 auto;
+}

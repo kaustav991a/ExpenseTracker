@@ -11,6 +11,8 @@ import AddExpences from "./pages/AddExpences/AddExpences";
 import EditExpenses from "./pages/EditExpences/EditExpences";
 // import { useState } from "react";
 import AppLayout from "./AppLayout";
+import Profile from "./pages/Profile/Profile";
+import Statistics from "./pages/Statistics/Statistics";
 
 // const [transactions, setTransactions] = useState([]);
 
@@ -50,6 +52,14 @@ const router = createBrowserRouter([
       {
         path: "edit-expense",
         element: <EditExpenses />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "statistics",
+        element: <Statistics />,
       },
       // {
       //   path: "/transaction-details",

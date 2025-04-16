@@ -1,0 +1,36 @@
+.bottomnav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #429690;
+    padding: 15px 30px;
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        li {
+            a,
+            button {
+                border: none;
+                background-color: transparent;
+                color: white;
+                font-size: 30px;
+                cursor: pointer;
+                // width: 60px;
+                // height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease-in-out;
+                border: 15px solid #429690;
+                &.active {
+                    background-color: #2a635f;
+                    font-size: 50px;
+                    border-radius: 50px;
+                    transform: translateY(-40px);
+                }
+            }
+        }
+    }
+}

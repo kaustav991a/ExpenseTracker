@@ -1,0 +1,110 @@
+.home-outer {
+    min-height: 100vh;
+    position: relative;
+    .topbluesec {
+        height: 287px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #429690;
+        padding: 15px 30px;
+        .text {
+            h6 {
+                color: #fff;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+            h5 {
+                color: #fff;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+        }
+        .notification {
+            a {
+                border-radius: 6.667px;
+                background: rgba(255, 255, 255, 0.06);
+                display: inline-flex;
+                padding: 8.333px;
+                align-items: center;
+                gap: 8.333px;
+                svg {
+                    fill: white;
+                }
+            }
+        }
+        .whitearrow {
+            font-size: 30px;
+            color: white;
+        }
+    }
+    .profile-sec {
+        max-width: 360px;
+        text-align: center;
+        margin: -50px auto 0;
+        .profile-img {
+            max-width: 120px;
+            width: 100%;
+            background: white;
+            border-radius: 60px;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+        }
+        .profile-details {
+            h6 {
+                color: #222;
+                text-align: center;
+                font-family: Inter;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                margin-bottom: 10px;
+            }
+            p {
+                color: var(--GREEN, #438883);
+                text-align: center;
+                font-family: Inter;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                margin-bottom: 34px;
+            }
+        }
+        .account-info {
+            ul {
+                li {
+                    text-align: left;
+                    position: relative;
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                    display: flex;
+                    align-items: center;
+                    .item-content {
+                        display: flex;
+                        align-items: center;
+                    }
+                    &:first-child {
+                        padding-bottom: 16px;
+                        // margin-bottom: 16px;
+                        border-bottom: 1px solid #eee;
+                    }
+                    svg {
+                        margin-right: 30px;
+                        font-size: 20px;
+                    }
+                    a {
+                        position: absolute;
+                        inset: 0;
+                    }
+                }
+            }
+        }
+    }
+}
