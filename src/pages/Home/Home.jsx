@@ -1,25 +1,79 @@
-import React from "react";
+// import React from "react";
+import React, { useEffect, useState } from "react";
+import { db, auth } from "../../firebase";
+import {
+  collection,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+} from "firebase/firestore";
 import { motion } from "framer-motion";
 import "./Home.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { TransactionContext } from "../../context/TransactionContext";
+// import { useContext } from "react";
+// import { TransactionContext } from "../../context/TransactionContext";
+import BottomNav from "../../components/BottomNav/BottomNav";
 
 import { FaBell } from "react-icons/fa"; // Font Awesome
 import { MdMoreHoriz } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md"; // Material Design
 import { MdKeyboardArrowUp } from "react-icons/md";
-
 import { CiEdit } from "react-icons/ci";
-import BottomNav from "../../components/BottomNav/BottomNav";
+import TransactionSkeleton from "../../components/SkeletonLoader/TransactionSkeleton";
 
 function Home() {
-  const { transactions } = useContext(TransactionContext);
-  const navigate = useNavigate(); // ✅ correct way to use the hook
+  const [loading, setLoading] = useState(true); // Add loading state
+  const [transactions, setTransactions] = useState([]);
+  const [loadingTransactions, setLoadingTransactions] = useState(true);
+  const [error, setError] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null); // Local auth state
+  const navigate = useNavigate();
 
-  const handleEdit = (item, index) => {
-    navigate("/edit-expense", { state: { item, index } });
-  };
+  useEffect(() => {
+    const unsubscribeAuth = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+    });
+    return unsubscribeAuth;
+  }, []);
+
+  useEffect(() => {
+    setLoadingTransactions(true);
+    setTransactions([]);
+
+    if (currentUser) {
+      const transactionsRef = collection(db, "transactions");
+      const q = query(
+        transactionsRef,
+        where("userId", "==", currentUser.uid),
+        orderBy("timestamp", "desc")
+      );
+
+      const unsubscribeSnapshot = onSnapshot(
+        q,
+        (snapshot) => {
+          const fetchedTransactions = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          setTransactions(fetchedTransactions);
+          setLoadingTransactions(false);
+          setLoading(false); // Set loading to false when data is loaded
+        },
+        (err) => {
+          setError(err.message);
+          setLoadingTransactions(false);
+          setLoading(false); // Set loading to false on error as well
+        }
+      );
+
+      return () => unsubscribeSnapshot();
+    } else {
+      setLoadingTransactions(false);
+      setLoading(false); // Set loading to false if no user is logged in
+    }
+  }, [currentUser]);
+
   const income = transactions
     .filter((t) => t.type === "credit")
     .reduce((sum, t) => sum + t.amount, 0);
@@ -29,6 +83,10 @@ function Home() {
     .reduce((sum, t) => sum + t.amount, 0);
 
   const totalBalance = income - expenses;
+
+  const handleEdit = (item) => {
+    navigate("/edit-expense", { state: { item: { ...item, id: item.id } } });
+  };
 
   return (
     <>
@@ -41,7 +99,11 @@ function Home() {
           <div className="topbluesec">
             <div className="text">
               <h6>Good afternoon,</h6>
-              <h5>Enjelin Morgeana</h5>
+              {loading ? (
+                <h5>Loading...</h5> // Display loader while loading
+              ) : (
+                <h5>{currentUser ? currentUser.displayName : "Guest"}!</h5>
+              )}
             </div>
             <div className="notification">
               <Link>
@@ -92,30 +154,43 @@ function Home() {
             </div>
 
             <ul className="transactions-list">
-              {transactions.map((item, index) => (
-                <li className="transaction-item" key={index}>
-                  <div className="left">
-                    <div className="icon">
-                      {/* <img src={item.icon} alt={item.name} /> */}
+              {loadingTransactions ? (
+                // Render multiple skeleton items while loading
+                Array.from({ length: 5 }).map((_, index) => (
+                  <TransactionSkeleton key={index} />
+                ))
+              ) : error ? (
+                <li>Error loading transactions: {error}</li>
+              ) : (
+                transactions.map((item) => (
+                  <li className="transaction-item" key={item.id}>
+                    <div className="left">
+                      <div className="icon">
+                        {/* <img src={item.icon} alt={item.name} /> */}
+                      </div>
+                      <div className="text">
+                        <h4>{item.name}</h4>
+                        {item.date && (
+                          <p>
+                            {new Date(item.date.toDate()).toLocaleDateString()}
+                          </p>
+                        )}
+                      </div>
                     </div>
-                    <div className="text">
-                      <h4>{item.name}</h4>
-                      <p>{item.date}</p>
+                    <div className={`amount ${item.type}`}>
+                      {item.type === "debit" ? "-" : "+"} INR{" "}
+                      {item.amount.toFixed(2)}
+                      <button
+                        className="edit-btn"
+                        onClick={() => handleEdit(item)}
+                      >
+                        <CiEdit />
+                      </button>
                     </div>
-                  </div>
-                  <div className={`amount ${item.type}`}>
-                    {item.type === "debit" ? "-" : "+"} INR{" "}
-                    {item.amount.toFixed(2)}
-                    <button
-                      className="edit-btn"
-                      onClick={() => handleEdit(item, index)}
-                    >
-                      <CiEdit />
-                    </button>
-                  </div>
-                  <Link to="/transaction-details" className="abs"></Link>
-                </li>
-              ))}
+                    <Link to="/transaction-details" className="abs"></Link>
+                  </li>
+                ))
+              )}
             </ul>
           </div>
 

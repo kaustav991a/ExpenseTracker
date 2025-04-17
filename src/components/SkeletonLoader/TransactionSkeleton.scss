@@ -1,0 +1,56 @@
+// src/components/SkeletonLoader/TransactionSkeleton.scss
+.transaction-skeleton-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .skeleton-left {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+
+    .skeleton-icon {
+      width: 40px;
+      height: 40px;
+      background-color: #f0f0f0;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .skeleton-text {
+      display: flex;
+      flex-direction: column;
+
+      .skeleton-line {
+        background-color: #f0f0f0;
+        border-radius: 4px;
+        height: 10px;
+        margin-bottom: 5px;
+
+        &.short {
+          width: 60px;
+        }
+
+        &.longer {
+          width: 120px;
+        }
+      }
+    }
+  }
+
+  .skeleton-amount {
+    margin-left: auto;
+
+    .skeleton-line {
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      height: 10px;
+      width: 80px;
+    }
+  }
+}

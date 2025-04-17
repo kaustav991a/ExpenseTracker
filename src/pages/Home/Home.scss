@@ -144,6 +144,8 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            height: calc(45vh - 100px);
+            overflow: auto;
 
             .transaction-item {
                 display: flex;

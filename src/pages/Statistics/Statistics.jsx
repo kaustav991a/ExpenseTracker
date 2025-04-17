@@ -94,23 +94,23 @@ function Statistics() {
               </AreaChart>
             </ResponsiveContainer>
 
-            <div class="transactions w-full">
-              <div class="transactions-header">
+            <div className="transactions w-full">
+              <div className="transactions-header">
                 <h3>Top Spending</h3>
-                <a href="#!" class="see-all">
+                <Link to="#!" className="see-all">
                   See all
-                </a>
+                </Link>
               </div>
-              <ul class="transactions-list">
-                <li class="transaction-item">
-                  <div class="left">
-                    <div class="icon"></div>
-                    <div class="text">
+              <ul className="transactions-list">
+                <li className="transaction-item">
+                  <div className="left">
+                    <div className="icon"></div>
+                    <div className="text">
                       <h4>Salary</h4>
                       <p>Tue Feb 22 2022</p>
                     </div>
                   </div>
-                  <div class="amount credit">+ INR 15784.00</div>
+                  <div className="amount credit">+ INR 15784.00</div>
                   <Link className="abs" href="/transaction-details"></Link>
                 </li>
               </ul>

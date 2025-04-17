@@ -1,23 +1,17 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { TransactionContext } from "../../context/TransactionContext"; // adjust path
+import { db, auth } from "../../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { motion } from "framer-motion";
 import "./AddExpences.scss";
 
 function AddExpences() {
   const [type, setType] = useState("credit");
-  const { transactions, setTransactions } = useContext(TransactionContext); // ✅ Correct context usage
   const [selectedName, setSelectedName] = useState("");
   const [amount, setAmount] = useState("");
-  const [date, setDate] = useState("2022-02-22");
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [invoice, setInvoice] = useState(null);
-
-  const nameOptions = [
-    { name: "Netflix" },
-    { name: "Spotify" },
-    { name: "Amazon" },
-  ];
+  const navigate = useNavigate();
 
   const getRelativeDate = (d) => {
     const today = new Date();
@@ -26,36 +20,41 @@ function AddExpences() {
 
     if (diff < 1) return "Today";
     if (diff < 2) return "Yesterday";
-    return inputDate.toDateString(); // ex: Mon Jan 22 2022
+    return inputDate.toDateString();
   };
 
-  const handleAddExpense = () => {
-    const icon = nameOptions.find((opt) => opt.name === selectedName)?.icon;
-    const newTransaction = {
-      name: selectedName,
-      icon,
-      amount: parseFloat(amount),
-      date: getRelativeDate(date),
-      type, // credit or debit
-    };
+  const handleAddExpense = async () => {
+    const user = auth.currentUser;
+    if (!user) {
+      console.error("User not authenticated.");
+      return;
+    }
 
-    setTransactions((prevTransactions) => [
-      newTransaction,
-      ...prevTransactions,
-    ]);
+    try {
+      const docRef = await addDoc(collection(db, "transactions"), {
+        userId: user.uid,
+        name: selectedName,
+        amount: parseFloat(amount),
+        type: type,
+        date: serverTimestamp(), // Still store the date
+        timestamp: serverTimestamp(), // Ensure timestamp is being added
+        // ... other fields
+      });
+      console.log("Transaction added with ID: ", docRef.id);
+      navigate("/home");
+    } catch (error) {
+      console.error("Error adding transaction: ", error);
+    }
 
-    // Reset fields
+    // Reset form fields
+    setSelectedName("");
     setAmount("");
     setInvoice(null);
-
-    // ✅ Navigate to /home after state update
-    navigate("/home");
   };
 
   const handleInvoiceUpload = (e) => {
     setInvoice(e.target.files[0]);
   };
-  const navigate = useNavigate();
 
   return (
     <motion.div

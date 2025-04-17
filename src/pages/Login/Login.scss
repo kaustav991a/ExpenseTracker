@@ -26,6 +26,8 @@
     .btn {
         margin-bottom: 20px;
         margin-top: 0;
+        max-width: unset;
+        width: 100%;
     }
     input:not([type="submit"]) {
         width: 100%;
@@ -35,8 +37,8 @@
         margin-bottom: 20px;
         border-radius: 30px;
     }
-    p{
-        a{
+    p {
+        a {
             color: #63b5af;
         }
     }

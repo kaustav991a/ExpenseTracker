@@ -108,3 +108,84 @@
         }
     }
 }
+
+// ProfileSkeleton.scss (or in Profile.scss)
+.profile-skeleton-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+
+    .skeleton {
+        background-color: #f0f0f0;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+
+    .skeleton-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+
+    .skeleton-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .skeleton-line {
+            height: 12px;
+            width: 150px;
+
+            &.short {
+                width: 80px;
+            }
+
+            &.medium {
+                width: 120px;
+            }
+        }
+    }
+
+    .skeleton-account-info {
+        list-style: none;
+        padding: 0;
+        width: 100%;
+        margin-top: 20px;
+
+        li {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .skeleton-icon {
+                width: 24px;
+                height: 24px;
+                background-color: #f0f0f0;
+                border-radius: 4px;
+                margin-right: 10px;
+            }
+
+            .skeleton-line {
+                height: 12px;
+                width: 100%;
+            }
+
+            &.skeleton-invite {
+                align-items: center;
+                .skeleton-icon {
+                    width: 28px;
+                    height: 28px;
+                }
+                .skeleton-line {
+                    width: 120px;
+                }
+            }
+        }
+    }
+}
