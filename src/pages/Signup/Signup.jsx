@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Signup.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  sendEmailVerification,
+} from "firebase/auth";
 import { auth } from "../../firebase";
 import { LoadingContext } from "../../context/LoadingContext"; // ✅
 
@@ -17,8 +21,12 @@ function Signup() {
     confirmPassword: "",
   });
 
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [firebaseError, setFirebaseError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,38 +35,63 @@ function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
-    setLoading(true);
-    startLoading(); // ✅ show loader
+    setNameError("");
+    setEmailError("");
+    setPasswordError("");
+    setConfirmPasswordError("");
+    setFirebaseError("");
+    let isValid = true;
 
-    const { name, email, password, confirmPassword } = formData;
+    if (!formData.name.trim()) {
+      setNameError("Name is required.");
+      isValid = false;
+    }
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      setLoading(false);
-      completeLoading(); // ✅ hide loader
+    if (!formData.email.trim()) {
+      setEmailError("Email is required.");
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      setEmailError("Invalid email format.");
+      isValid = false;
+    }
+
+    if (!formData.password) {
+      setPasswordError("Password is required.");
+      isValid = false;
+    } else if (formData.password.length < 6) {
+      setPasswordError("Password must be at least 6 characters.");
+      isValid = false;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      setConfirmPasswordError("Passwords do not match.");
+      isValid = false;
+    }
+
+    if (!isValid) {
       return;
     }
+
+    setLoading(true);
+    startLoading(); // ✅ show loader
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
-        email,
-        password
+        formData.email,
+        formData.password
       );
 
       await updateProfile(userCredential.user, {
-        displayName: name,
+        displayName: formData.name,
       });
 
-      // Delay navigation slightly to allow Firebase to update the profile
-      setTimeout(() => {
-        navigate("/confirm-signup");
-      }, 500); // Adjust the delay time as needed
+      await sendEmailVerification(userCredential.user);
+      console.log("Verification email sent!");
+      navigate("/login"); // Redirect to login after signup (and email sent)
     } catch (err) {
       console.error(err.message);
-      setError(err.message);
+      setFirebaseError(err.message);
     } finally {
       setLoading(false);
       completeLoading(); // ✅ hide loader
@@ -75,39 +108,54 @@ function Signup() {
         <div className="signupbx">
           <h1>Sign Up</h1>
           <form onSubmit={handleSignup}>
-            <input
-              name="name"
-              type="text"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            <input
-              name="email"
-              type="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-            />
-            <input
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirm Password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-            />
+            <div className="form-group">
+              <input
+                name="name"
+                type="text"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+              {nameError && <p className="error-msg">{nameError}</p>}
+            </div>
+            <div className="form-group">
+              <input
+                name="email"
+                type="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+              {emailError && <p className="error-msg">{emailError}</p>}
+            </div>
+            <div className="form-group">
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+              {passwordError && <p className="error-msg">{passwordError}</p>}
+            </div>
+            <div className="form-group">
+              <input
+                name="confirmPassword"
+                type="password"
+                placeholder="Confirm Password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+              />
+            </div>
+            {firebaseError && <p className="error-msg">{firebaseError}</p>}
+
             <button type="submit" className="btn" disabled={loading}>
               {loading ? "Signing Up..." : "Sign Up"}
             </button>
           </form>
-          {error && <p className="error-msg">{error}</p>}
+          {confirmPasswordError && (
+            <p className="error-msg">{confirmPasswordError}</p>
+          )}
           <p>
             Already have an account? <Link to="/login">Log in</Link>
           </p>

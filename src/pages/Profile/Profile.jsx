@@ -70,7 +70,7 @@ function Profile() {
     {
       icon: <FaUser size={18} color="#333" />,
       title: "Account info",
-      link: "#!",
+      link: "/account-info",
     },
     {
       icon: <FaUserGroup size={18} color="#333" />,

@@ -13,6 +13,7 @@ import EditExpenses from "./pages/EditExpences/EditExpences";
 import AppLayout from "./AppLayout";
 import Profile from "./pages/Profile/Profile";
 import Statistics from "./pages/Statistics/Statistics";
+import AccountInfo from "./pages/AccountInfo/AccountInfo";
 
 // const [transactions, setTransactions] = useState([]);
 
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "account-info",
+        element: <AccountInfo />,
       },
       {
         path: "statistics",

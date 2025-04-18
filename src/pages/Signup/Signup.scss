@@ -19,6 +19,9 @@
         padding: 40px;
         border-radius: 30px;
     }
+    form {
+        width: 100%;
+    }
     h1 {
         color: #000;
         margin-bottom: 20px;
@@ -42,4 +45,16 @@
             color: #63b5af;
         }
     }
+}
+
+.error-msg {
+    padding: 10px 10px;
+    text-align: center;
+    display: block;
+    background-color: #ffa7a7;
+    color: #ff0000;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    font-size: 14px;
 }
