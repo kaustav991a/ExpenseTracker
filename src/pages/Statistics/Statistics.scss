@@ -47,7 +47,72 @@
 }
 
 .chartOuter {
-    width: 600px;
+    width: 100%; /* Make it responsive within its container */
     height: 250px;
+}
+
+.chartrow {
+    max-width: 80%;
+    align-items: flex-start;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 20%;
     margin: 0 auto;
+    gap: 20px; /* Add some space between chart and selector */
+    padding: 0; /* Add some padding on the sides */
+
+    @media (min-width: 768px) {
+        flex-direction: row; /* Display chart and selector in a row on larger screens */
+        align-items: flex-start; /* Align items to the top in the row */
+        justify-content: space-between; /* Put space between chart and selector */
+    }
+
+    .chart-selector {
+        // width: calc(100% - 430px);
+        label {
+            font-size: 14px;
+        }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            box-shadow: none;
+            padding: 7px 10px;
+            background-color: #fff;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z" fill="%23666"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px;
+            font-size: 12px;
+            color: #222;
+            width: 100%;
+            font-family: "Poppins", sans-serif;
+            border-radius: 20px;
+            border: 1px solid #ccc; /* Add a border for better visual */
+        }
+    }
+}
+
+.period-selector {
+    margin: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the radio buttons */
+    gap: 15px; /* Space out the radio buttons and labels */
+
+    label {
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    input[type="radio"] {
+        margin-right: 5px;
+    }
+}
+
+.view-selector,
+.timeframe-selector {
+    margin-top: 10px;
 }

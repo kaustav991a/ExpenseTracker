@@ -14,6 +14,7 @@ import AppLayout from "./AppLayout";
 import Profile from "./pages/Profile/Profile";
 import Statistics from "./pages/Statistics/Statistics";
 import AccountInfo from "./pages/AccountInfo/AccountInfo";
+import TransactionDetails from "./pages/TransactionDetails/TransactionDetails";
 
 // const [transactions, setTransactions] = useState([]);
 
@@ -66,10 +67,10 @@ const router = createBrowserRouter([
         path: "statistics",
         element: <Statistics />,
       },
-      // {
-      //   path: "/transaction-details",
-      //   element: <TransactionDetails />,
-      // },
+      {
+        path: "transaction-details/:id", // Add this new route with a dynamic 'id' parameter
+        element: <TransactionDetails />,
+      },
     ],
   },
 ]);

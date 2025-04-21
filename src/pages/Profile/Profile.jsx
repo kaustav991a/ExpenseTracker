@@ -102,13 +102,14 @@ function Profile() {
       >
         <div className="home-outer">
           <div className="topbluesec">
-            <Link className="whitearrow" to="/home">
+            <Link title="Back" className="whitearrow" to="/home">
               &larr;
             </Link>
             <div className="text">
               <h5>Profile</h5>
             </div>
             <div
+              title="Logout"
               className="notification"
               onClick={handleLogout}
               style={{ cursor: "pointer" }}
@@ -125,7 +126,7 @@ function Profile() {
                   <img src={profileImg} alt="Profile" />
                 </div>
                 <div className="profile-details">
-                  <h6>{user ? user.displayName : "Guest"}!</h6>
+                  <h6>{user ? user.displayName : "Guest"}</h6>
                   <p>@{user?.email?.split("@")[0] || "user"}</p>
                 </div>
                 <div className="account-info">

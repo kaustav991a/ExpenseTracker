@@ -225,7 +225,11 @@
             }
         }
         &.w-full {
-            max-width: 100%;
+            // max-width: 100%;
+            max-width: 80%;
+            .transactions-list {
+                height: calc(45vh - 190px);
+            }
         }
     }
 }

@@ -163,7 +163,7 @@ function Home() {
                 <li>Error loading transactions: {error}</li>
               ) : (
                 transactions.map((item) => (
-                  <li className="transaction-item" key={item.id}>
+                  <li key={item.id} className="transaction-item">
                     <div className="left">
                       <div className="icon">
                         {/* <img src={item.icon} alt={item.name} /> */}
@@ -182,12 +182,24 @@ function Home() {
                       {item.amount.toFixed(2)}
                       <button
                         className="edit-btn"
-                        onClick={() => handleEdit(item)}
+                        onClick={(e) => {
+                          e.preventDefault(); // Prevent navigation when clicking edit
+                          handleEdit(item);
+                        }}
                       >
                         <CiEdit />
                       </button>
                     </div>
-                    <Link to="/transaction-details" className="abs"></Link>
+                    {/* The Link now wraps the entire li, so the abs class is not needed here */}
+                    {/* <Link
+            to={`/transaction-details/${item.id}`}
+            className="abs"
+          ></Link> */}
+                    <Link
+                      to={`/transaction-details/${item.id}`}
+                      className="transaction-link abs" // Optional class for styling the link
+                      key={item.id}
+                    ></Link>
                   </li>
                 ))
               )}

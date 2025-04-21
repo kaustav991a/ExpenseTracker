@@ -11,6 +11,8 @@ function AddExpences() {
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [invoice, setInvoice] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState(""); // New state for payment method
+  const [transactionId, setTransactionId] = useState(""); // New state for transaction ID
   const navigate = useNavigate();
 
   const getRelativeDate = (d) => {
@@ -38,6 +40,8 @@ function AddExpences() {
         type: type,
         date: serverTimestamp(), // Still store the date
         timestamp: serverTimestamp(), // Ensure timestamp is being added
+        paymentMethod: paymentMethod, // Include payment method
+        transactionId: transactionId, // Include transaction ID
         // ... other fields
       });
       console.log("Transaction added with ID: ", docRef.id);
@@ -50,6 +54,8 @@ function AddExpences() {
     setSelectedName("");
     setAmount("");
     setInvoice(null);
+    setPaymentMethod(""); // Reset payment method
+    setTransactionId(""); // Reset transaction ID
   };
 
   const handleInvoiceUpload = (e) => {
@@ -65,7 +71,6 @@ function AddExpences() {
       <div className="add-expense-container">
         <div className="top-bar">
           <Link to="/home">&larr;</Link>
-
           <h2>Add Expense</h2>
           <button className="menu-btn">•••</button>
         </div>
@@ -99,8 +104,6 @@ function AddExpences() {
               </select>
             </div>
 
-            {/* Type */}
-
             {/* Amount Input */}
             <div className="form-group amount">
               <label htmlFor="amount">Amount</label>
@@ -131,6 +134,32 @@ function AddExpences() {
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 className="date-picker"
+              />
+            </div>
+
+            {/* Payment Method Input */}
+            <div className="form-group">
+              <label htmlFor="payment-method">Payment Method</label>
+              <input
+                type="text"
+                id="payment-method"
+                value={paymentMethod}
+                onChange={(e) => setPaymentMethod(e.target.value)}
+                placeholder="e.g., Debit Card, UPI, Cash"
+                className="text-input"
+              />
+            </div>
+
+            {/* Transaction ID Input */}
+            <div className="form-group">
+              <label htmlFor="transaction-id">Transaction ID</label>
+              <input
+                type="text"
+                id="transaction-id"
+                value={transactionId}
+                onChange={(e) => setTransactionId(e.target.value)}
+                placeholder="Enter transaction ID (if applicable)"
+                className="text-input"
               />
             </div>
 
